@@ -1,5 +1,5 @@
 // Patron modulo IIFE
-const VideoPlayer = (function() {
+const AsignarVideo = (function() {
     // Función privada para mostrar el video
     function _mostrarVideo(url, id) {
         const iframe = document.getElementById(id);
@@ -50,8 +50,9 @@ class Reproductor extends Multimedia {
         this.id = id;
     }
 
+    // Método para llamar a la funcion que definimos en el módulo VideoPlayer
     playMultimedia() {
-        VideoPlayer.mostrarVideo(this.url, this.id);
+        AsignarVideo.mostrarVideo(this.url, this.id);
     }
 
     setInicio(tiempo) {
@@ -68,10 +69,16 @@ const urlSerie = 'https://www.youtube.com/embed/NcgfoRpWLTs?si=uWbaCiqw06pDWhpI'
 const urlMusica = 'https://www.youtube.com/embed/ALk3o7m5Jt8?si=lp7AcmouOnRsRfIl';
 
 
+
 // Creando instancias de la clase Reproductor para cada tipo de contenido
 const reproductorMusica = new Reproductor('musica', urlMusica);
 const reproductorPelicula = new Reproductor('peliculas', urlPelicula);
 const reproductorSerie = new Reproductor('series', urlSerie);
+
+
+// ejemplo de cambiar la url desde el setter de la nueva instancia
+reproductorMusica.url = "https://www.youtube.com/embed/cX40tn9fcgE?si=kGbBL4zJg1sz7pga";
+
 
 // Llamando al método playMultimedia de cada instancia
 reproductorMusica.playMultimedia();
